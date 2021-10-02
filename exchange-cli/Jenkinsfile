@@ -1,0 +1,23 @@
+pipeline {
+    agent {
+        lable 'node.js'
+    }
+
+    stages {
+       stage('Install Dependencies') {
+           steps {
+               dir('exhange-cli') {
+                   sh "npm-install"
+               }
+           }
+       }
+
+       stage('Build') {
+           steps {
+               dir('exhange-cli') {
+                   sh "npm run build"
+               }
+           }
+        }
+    }
+}
