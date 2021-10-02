@@ -6,7 +6,7 @@ pipeline {
     stages {
        stage('Install Dependencies') {
            steps {
-               dir('exhange-cli') {
+               dir('exchange-cli') {
                    sh "npm install"
                }
            }
@@ -14,7 +14,7 @@ pipeline {
 
        stage('Build') {
            steps {
-               dir('exhange-cli') {
+               dir('exchange-cli') {
                    sh "npm run build"
                }
            }
