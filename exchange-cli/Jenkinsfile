@@ -7,7 +7,7 @@ pipeline {
        stage('Install Dependencies') {
            steps {
                dir('exhange-cli') {
-                   sh "npm-install"
+                   sh "npm install"
                }
            }
        }
