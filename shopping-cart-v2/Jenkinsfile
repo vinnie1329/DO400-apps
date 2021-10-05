@@ -1,6 +1,10 @@
 pipeline {
     agent { node { label 'maven' } }
     environment {APP_NAMESPACE = 'rwmhmi-recover' }
+    parameters {
+       string(name: 'DEPLOY_TAG', description: 'Deploy to Tag')
+    }
+
     stages {
         stage('Test') {
             when { expression { params.DEPLOY_TAG == '' } } 
@@ -14,9 +18,6 @@ pipeline {
         stage('Build Image') {
             when { expression { params.DEPLOY_TAG =='' } }
             environment { QUAY = credentials('QUAY_USER') }
-            parameters {
-                string(name: 'DEPLOY_TAG', description: 'Deploy to Tag')
-            }
 
             steps {
                dir('shopping-cart-v2') {
