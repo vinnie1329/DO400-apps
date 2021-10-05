@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                sendNotification('started', 'team@example.com')
                 git branch: 'notifications',
                     url: 'https://github.com/vinnie1329/DO400-apps'
             }
@@ -14,14 +15,6 @@ pipeline {
                dir('simple-calculator') {
                    sh './mvnw clean test'
                }
-            }
-        }
-
-        stage('Checkout') {
-            steps {
-                sendNotification('started', 'team@example.com')
-                git branch: 'notifications',
-                    url: 'https://github.com/vinnie1329/DO400-apps'
             }
         }
     }
