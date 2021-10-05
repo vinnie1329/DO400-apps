@@ -35,11 +35,12 @@ pipeline {
                             returnStatus = true
                         )
                     
-                    if (status != 0) {
-                        error("Tag not found in Quay!")
-                    }
+                        if (status != 0) {
+                            error("Tag not found in Quay!")
+                        }
  
-                    sh './scripts/redeploy.sh $APP_NAMESPACE'
+                        sh './scripts/redeploy.sh $APP_NAMESPACE'
+                    }
                 }
             }
         }
