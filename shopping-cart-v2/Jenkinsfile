@@ -32,7 +32,7 @@ pipeline {
                     script {
                         def status = sh(
                             script: "./scripts/tag-exists-in-quay.sh $QUAY_USR/do400-recover latest",
-                            returnStatus = true
+                            returnStatus: true
                         )
                     
                         if (status != 0) {
